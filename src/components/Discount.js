@@ -24,7 +24,7 @@ export default class Discount extends Component {
   }
 
   retrievePosts(){
-    axios.get("/discounts").then(res =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/discounts`).then(res =>{
       if(res.data.success){
         this.setState({
           posts:res.data.existingPosts
@@ -36,7 +36,7 @@ export default class Discount extends Component {
 
 
   onDelete = (id) =>{
-    axios.delete(`/discount/delete/${id}`).then((res) =>{
+    axios.delete(`${process.env.REACT_APP_BACKEND}/discount/delete/${id}`).then((res) =>{
       //alert("Deteted Successfully");
       toast.error("Discount Deleted",{
         theme: "colored",
@@ -57,7 +57,7 @@ export default class Discount extends Component {
   handleSearchArea = (e) =>{
     //console.log(e.currentTarget.value);
     const searchKey = e.currentTarget.value;
-    axios.get("/discounts").then(res =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/discounts`).then(res =>{
       if(res.data.success){
         
         this.filterData(res.data.existingPosts,searchKey)
@@ -72,15 +72,7 @@ export default class Discount extends Component {
 
 
   /*--------------------------------- ADD DISCOUNT POPUP -----------------------------*/
-// constructor(props){
-//   super(props);
-//   this.state={
-//     discountName:"",
-//     minAmount:"",
-//     percentage:"",
-//     maxLimit:""
-//   }
-// }
+
 
 handleInputChange = (e) =>{
   const {name,value} = e.target;
@@ -104,7 +96,7 @@ autoFill = (e) =>{
   }
 
   console.log(data)
-  axios.post("/discount/insert",data).then((res) =>{
+  axios.post(`${process.env.REACT_APP_BACKEND}/discount/insert`,data).then((res) =>{
     if(res.data.success){
       //alert("Post Created")
       toast.success("Discount added Successfuly!",{
@@ -275,7 +267,7 @@ async generateReport() {
 
   const obj = { discounts: this.state.posts }
 
-  await axios.post('/DiscountReport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+  await axios.post(`${process.env.REACT_APP_BACKEND}/DiscountReport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
 
       //alert('Report Generated')
       toast.success('Report Generated Successfully', { position: toast.POSITION.TOP_CENTER })

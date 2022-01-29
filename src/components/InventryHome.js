@@ -25,7 +25,7 @@ componentDidMount(){
 
 
 retrievePosts(){
-  axios.get("/Inventry/get").then(res=>{
+  axios.get(`${process.env.REACT_APP_BACKEND}/Inventry/get`).then(res=>{
     if(res.data.success){
       this.setState({
         posts:res.data.existingPosts
@@ -38,7 +38,7 @@ retrievePosts(){
 
 
 onDelete =(id)=>{
-    axios.delete(`/Inventry/delete/${id}`).then((res) =>{
+    axios.delete(`${process.env.REACT_APP_BACKEND}/Inventry/delete/${id}`).then((res) =>{
         toast.error("Product Deleted",{
           theme: "colored",
           icon: false,
@@ -60,7 +60,7 @@ filterData(posts,searchKey){
 handleSearchArea =(e) =>{
     const searchKey = e.currentTarget.value;
 
-        axios.get("/posts").then(res=>{
+        axios.get(`${process.env.REACT_APP_BACKEND}/posts`).then(res=>{
           if(res.data.success){
             this.filterData(res.data.existingPosts,searchKey)
             }    
@@ -89,7 +89,7 @@ autoFill = (e) =>{
   }
 
   console.log(data)
-  axios.post("/Inventry/save",data).then((res)=>{
+  axios.post(`${process.env.REACT_APP_BACKEND}/Inventry/save`,data).then((res)=>{
     if(res.data.success){
       toast.success("Product Added Successfuly!",{
         theme: "colored",
@@ -198,7 +198,7 @@ onSubmit = (e) =>{
     }
   }
   else {
-  axios.post("/Inventry/save",data).then((res)=>{
+  axios.post(`${process.env.REACT_APP_BACKEND}/Inventry/save`,data).then((res)=>{
       if(res.data.success){
         toast.success("Product Added Successfuly!",{
           theme: "colored",
@@ -245,7 +245,7 @@ async generateReport() {
 
   const obj = { inventory: this.state.posts }
 
-  await axios.post('/generateinventoryreport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+  await axios.post(`${process.env.REACT_APP_BACKEND}/generateinventoryreport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
 
       //alert('Report Generated')
 
@@ -292,7 +292,7 @@ async generateReport() {
               const searchKey = e.currentTarget.value;
 
 
-              axios.get("/Inventry/get").then(res=>{
+              axios.get(`${process.env.REACT_APP_BACKEND}/Inventry/get`).then(res=>{
                 if(res.data.success){
                   this.filterData(res.data.existingPosts,searchKey)
             

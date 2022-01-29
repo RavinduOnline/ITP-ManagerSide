@@ -25,7 +25,7 @@ export default class CustomerManage extends Component {
   }
 
   retrievePosts(){
-    axios.get("/customer/get").then(res =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/customer/get`).then(res =>{
       if(res.data.success){
         this.setState({
           posts:res.data.existingPosts
@@ -37,7 +37,7 @@ export default class CustomerManage extends Component {
 
 
   onDelete = (id) =>{
-    axios.delete(`/customer/delete/${id}`).then((res) =>{
+    axios.delete(`${process.env.REACT_APP_BACKEND}/customer/delete/${id}`).then((res) =>{
       toast.error("Customer Account Deleted",{
 
         theme: "colored",
@@ -63,7 +63,7 @@ export default class CustomerManage extends Component {
   handleSearchArea = (e) =>{
     const searchKey = e.currentTarget.value;
 
-    axios.get("/customer/get").then(res =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/customer/get`).then(res =>{
       if(res.data.success){
         
         this.filterData(res.data.existingPosts,searchKey)
@@ -86,7 +86,7 @@ async generateReport() {
 
   const obj = { customer: this.state.posts }
   
-  await axios.post('/generateCustomerReport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+  await axios.post(`${process.env.REACT_APP_BACKEND}/generateCustomerReport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
   
   //alert('Report Generated')
   

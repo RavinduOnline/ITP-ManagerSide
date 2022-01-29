@@ -76,7 +76,7 @@ export default class InventryEdit extends Component {
         }
 
         else {
-            axios.put(`/Inventry/update/${id}`,data).then((res)=>{
+            axios.put(`${process.env.REACT_APP_BACKEND}/Inventry/update/${id}`,data).then((res)=>{
                 if(res.data.success){
                     alert("Product Updated Successfully")
                     window.location.href='/Inventry';
@@ -97,7 +97,7 @@ export default class InventryEdit extends Component {
     componentDidMount(){
         const id = this.props.match.params.id;
 
-        axios.get(`/Inventry/getOne/${id}`).then((res) =>{
+        axios.get(`${process.env.REACT_APP_BACKEND}/Inventry/getOne/${id}`).then((res) =>{
             if(res.data.success){
                 this.setState({
                     ProductName:res.data.post.ProductName,

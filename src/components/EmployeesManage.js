@@ -17,7 +17,7 @@ const Employee = props => (
     <td > { props.Employee.Salary } </td> 
     <td >
 
-    <Link id="staffEdit" to = { "/Edit/" + props.Employee._id } > Edit </Link> 
+    <Link id="staffEdit" to = { `${process.env.REACT_APP_BACKEND}/Edit/` + props.Employee._id } > Edit </Link> 
      <a id="staffDelete" href=" " onClick={() => { props.deleteEmployee(props.Employee._id) }}>Delete</a > 
     </td > 
     </tr>
@@ -55,7 +55,7 @@ export default class EmployeesManage extends Component {
       }
 
       retrievePosts(){
-        axios.get('/Employee/get')
+        axios.get(`${process.env.REACT_APP_BACKEND}/Employee/get`)
             .then(response => {
                 this.setState({ Employees: response.data })
             })
@@ -65,7 +65,7 @@ export default class EmployeesManage extends Component {
     }
 
     deleteEmployee(id) {
-        axios.delete('/Employees/delete/' + id)
+        axios.delete(`${process.env.REACT_APP_BACKEND}/Employees/delete/` + id)
             .then(response => { console.log(response.data) });
 
         this.setState({
@@ -90,7 +90,7 @@ export default class EmployeesManage extends Component {
 handleSearchArea = (e) => {
         const searchKey = e.currentTarget.value;
 
-        axios.get('/Employee/get').then((response) => {
+        axios.get(`${process.env.REACT_APP_BACKEND}/Employee/get`).then((response) => {
             const resultt = response.data;
             const result = resultt.filter((props) =>
                 props.Name.includes(searchKey)
@@ -175,7 +175,7 @@ handleSearchArea = (e) => {
 
         console.log(Employee);
 
-        axios.post('/Employees/Insert', Employee)
+        axios.post(`${process.env.REACT_APP_BACKEND}/Employees/Insert`, Employee)
             .then(res => console.log(res.data));
 
         window.location = '/Employee/';
@@ -200,7 +200,7 @@ handleSearchArea = (e) => {
         
 async generateReport() {
     const obj = { staff: this.state.Employees }
-    await axios.post('/generatestaffReport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+    await axios.post(`${process.env.REACT_APP_BACKEND}/generatestaffReport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
         //alert('Report Generated')
         toast.success('Report Generated Successfully', { position: toast.POSITION.TOP_CENTER })
         console.log(res)

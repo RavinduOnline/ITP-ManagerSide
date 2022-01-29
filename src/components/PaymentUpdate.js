@@ -28,7 +28,7 @@ export default class EditPayment extends Component {
     }
 
     componentDidMount() {
-        axios.get('/payment/get/' + this.props.match.params.id)
+        axios.get(`${process.env.REACT_APP_BACKEND}/payment/get/` + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     Cardname: response.data.Cardname,
@@ -100,7 +100,7 @@ export default class EditPayment extends Component {
 
         console.log(Payment);
 
-        axios.post('/update/' + this.props.match.params.id, Payment)
+        axios.post(`${process.env.REACT_APP_BACKEND}/update/` + this.props.match.params.id, Payment)
             .then(res => console.log(res.data));
 
         window.location = '/Payments/';

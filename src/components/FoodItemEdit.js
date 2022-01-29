@@ -45,7 +45,7 @@ onSubmit = (e) => {
 
     console.log(data)
 
-    axios.put(`/FoodItems/update/${id}`,data).then((res) => {
+    axios.put(`${process.env.REACT_APP_BACKEND}/FoodItems/update/${id}`,data).then((res) => {
         if(res.data.success){
 
           setTimeout(function(){
@@ -74,7 +74,7 @@ onSubmit = (e) => {
   componentDidMount(){
     const id = this.props.match.params.id;
 
-    axios.get(`/FoodItems/getone/${id}`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BACKEND}/FoodItems/getone/${id}`).then((res) => {
         if(res.data.success){
             this.setState({
               ItemName:res.data.post.ItemName,

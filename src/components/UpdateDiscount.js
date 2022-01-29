@@ -134,7 +134,7 @@ if (discountName== null || minAmount == null || minAmount <=0 || percentage == n
 
 
 else {
-    axios.put(`/discount/update/${id}`,data).then((res) =>{
+    axios.put(`${process.env.REACT_APP_BACKEND}/discount/update/${id}`,data).then((res) =>{
       if(res.data.success){
         // alert("Post Updated Successfully")
         toast.success("Discount Updated Successfully!",{
@@ -165,7 +165,7 @@ else {
 
     const id = this.props.match.params.id;
 
-    axios.get(`/discount/${id}`).then((res) =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/discount/${id}`).then((res) =>{
       if(res.data.success){
         this.setState({
           discountName:res.data.post.discountName,

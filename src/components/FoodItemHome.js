@@ -45,7 +45,7 @@ export class FoodItemHome extends Component {
 
   //create  method for retrieving data to the table
   retrievePost(){
-    axios.get("/FoodItems/get").then(res => {
+    axios.get(`${process.env.REACT_APP_BACKEND}/FoodItems/get`).then(res => {
       if(res.data.success){                        // <--------------- you can see success in get method of backend > routes > posts.js, go and see it!, in that point we code success=true, thats mean in here we call success and backend take it as true, then we can retrive data from backend//
 
         this.setState({
@@ -65,7 +65,7 @@ export class FoodItemHome extends Component {
 
   onDelete = (id) =>{
 
-    axios.delete(`/FoodItems/delete/${id}`).then((res) => {
+    axios.delete(`${process.env.REACT_APP_BACKEND}/FoodItems/delete/${id}`).then((res) => {
 
       toast.error("Item Deleted",{
         theme: "colored",
@@ -98,7 +98,7 @@ handleSearchArea = (e) =>{
 
     const searchKey = e.currentTarget.value;
 
-    axios.get("/FoodItems/get").then(res => {
+    axios.get(`${process.env.REACT_APP_BACKEND}/FoodItems/get`).then(res => {
         if(res.data.success){                        // <--------------- you can see success in get method of backend > routes > posts.js, go and see it!, in that point we code success=true, thats mean in here we call success and backend take it as true, then we can retrive data from backend//
   
           this.filterData(res.data.existingPosts,searchKey)
@@ -146,7 +146,7 @@ autoFill = (e) =>{
     }
   
     console.log(data)
-  axios.post("/FoodItems/Insert",data).then((res) => {
+  axios.post(`${process.env.REACT_APP_BACKEND}/FoodItems/Insert`,data).then((res) => {
     if(res.data.success){
 
       setTimeout(function(){
@@ -326,7 +326,7 @@ onSubmit = (e) => {
 
     const obj = { fooditems: this.state.posts }
 
-    await axios.post('/foodItemsReport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+    await axios.post(`${process.env.REACT_APP_BACKEND}/foodItemsReport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
 
         //alert('Report Generated')
 

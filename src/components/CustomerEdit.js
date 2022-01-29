@@ -110,7 +110,7 @@ export default class CustomerEdit extends Component {
     else{
 
 
-        axios.put(`/customer/update/${id}`,data).then((res) =>{
+        axios.put(`${process.env.REACT_APP_BACKEND}/customer/update/${id}`,data).then((res) =>{
           if(res.data.success){
             alert("Updated Successfully")
             window.location.replace('/customer');
@@ -135,7 +135,7 @@ componentDidMount(){
 
     const id = this.props.match.params.id;
 
-    axios.get(`/customer/getone/${id}`).then((res) =>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/customer/getone/${id}`).then((res) =>{
       if(res.data.success){
         this.setState({
               Fname:res.data.post.Fname,

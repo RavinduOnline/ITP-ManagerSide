@@ -115,7 +115,7 @@ class CostEdit extends Component {
      
     else{
 
-        axios.put(`/costing/update/${id}`,data).then((res) =>{
+        axios.put(`${process.env.REACT_APP_BACKEND}/costing/update/${id}`,data).then((res) =>{
 
           if(res.data.success){ 
             toast.success("Cost Updated",{
@@ -139,7 +139,7 @@ class CostEdit extends Component {
 
   componentDidMount(){
     const id = this.props.match.params.id;
-    axios.get(`/costing/${id}`).then((res)=>{
+    axios.get(`${process.env.REACT_APP_BACKEND}/costing/${id}`).then((res)=>{
         if(res.data.success){
             this.setState({
                name:res.data.post.name,

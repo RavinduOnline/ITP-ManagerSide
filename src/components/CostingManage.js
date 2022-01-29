@@ -24,7 +24,7 @@ class CostingManage extends Component {
             }
 
             retrievePosts(){
-              axios.get("/costing")
+              axios.get(`${process.env.REACT_APP_BACKEND}/costing`)
                     .then(res =>{
                       if(res.data.success){
                         this.setState({
@@ -39,7 +39,7 @@ class CostingManage extends Component {
 
 
             onDelete = (id) =>{
-              axios.delete(`/costing/delete/${id}`)
+              axios.delete(`${process.env.REACT_APP_BACKEND}/costing/delete/${id}`)
               .then((res) =>{
                 toast.error("Cost Deleted",{
                   theme: "colored",
@@ -57,7 +57,7 @@ class CostingManage extends Component {
           
               const searchKey = e.currentTarget.value;
           
-              axios.get("/costing")
+              axios.get(`${process.env.REACT_APP_BACKEND}/costing`)
                     .then(res =>{
                       if(res.data.success){
                         this.filterData(res.data.existingPosts,searchKey)
@@ -106,7 +106,7 @@ class CostingManage extends Component {
                         }
                         console.log(data)
 
-                            axios.post("/costing/save",data).then((res) =>{
+                            axios.post(`${process.env.REACT_APP_BACKEND}/costing/save`,data).then((res) =>{
                               if(res.data.success){
                                 toast.success("Cost Successfully Added",{
                                   theme: "colored",
@@ -219,7 +219,7 @@ class CostingManage extends Component {
                           }
                        
                       else{
-                          axios.post("/costing/save",data).then((res) =>{
+                          axios.post(`${process.env.REACT_APP_BACKEND}/costing/save`,data).then((res) =>{
                             if(res.data.success){
                               toast.success("Cost Successfully Added",{
                                 theme: "colored",
@@ -251,7 +251,7 @@ class CostingManage extends Component {
         
         async generateReport() {
           const obj = { costing: this.state.posts }
-          await axios.post('/costingReport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+          await axios.post(`${process.env.REACT_APP_BACKEND}/costingReport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
               //alert('Report Generated')
               toast.success('Report Generated Successfully', { position: toast.POSITION.TOP_CENTER })
               console.log(res)

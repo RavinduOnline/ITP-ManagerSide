@@ -7,7 +7,7 @@ export default class Footer extends Component {
         <div className="footer">
 
             <div className="copyright">
-                <a href="/developers"><h1>All Right reserved by ©TEAM_M8</h1></a>
+                <a href="/developers"><h1>All Right reserved by © TEAM M8</h1></a>
             </div>
 
         </div>

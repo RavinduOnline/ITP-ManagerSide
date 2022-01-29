@@ -16,7 +16,7 @@ class PostDetails extends Component {
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        axios.get(`/costing/${id}`).then((res)=>{
+        axios.get(`${process.env.REACT_APP_BACKEND}/costing/${id}`).then((res)=>{
             if(res.data.success){
                 this.setState({
                     post:res.data.post

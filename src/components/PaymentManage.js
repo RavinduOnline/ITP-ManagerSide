@@ -37,7 +37,7 @@ export default class PaymentList extends Component {
     }
 
     componentDidMount() {
-        axios.get('/payment/get/')
+        axios.get(`${process.env.REACT_APP_BACKEND}/payment/get/`)
             .then(response => {
                 this.setState({ Payment: response.data })
             })
@@ -47,7 +47,7 @@ export default class PaymentList extends Component {
     }
 
     deletePayment(id) {
-        axios.delete('/payment/delete/'+ id)
+        axios.delete(`${process.env.REACT_APP_BACKEND}/payment/delete/`+ id)
             .then(response => { console.log(response.data) });
 
         this.setState({
@@ -73,7 +73,7 @@ export default class PaymentList extends Component {
 handleSearchArea = (e) => {
          const searchKey = e.currentTarget.value;
 
-         axios.get('/payment/get/').then((response) => {
+         axios.get(`${process.env.REACT_APP_BACKEND}/payment/get/`).then((response) => {
          const resultt = response.data;
          const result = resultt.filter((props) =>
          props.Cardname.includes(searchKey)
@@ -98,7 +98,7 @@ handleSearchArea = (e) => {
         
         async generateReport() {
           const obj = { payment: this.state.Payment }
-          await axios.post('/generatepaymentreport', obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
+          await axios.post(`${process.env.REACT_APP_BACKEND}/generatepaymentreport`, obj, { responseType: 'arraybuffer', headers: { Accept: 'application/pdf', }, }).then((res) => {
               //alert('Report Generated')
               toast.success('Report Generated Successfully', { position: toast.POSITION.TOP_CENTER })
               console.log(res)

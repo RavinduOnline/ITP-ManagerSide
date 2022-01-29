@@ -28,7 +28,7 @@ export default class EmployeeUpdate extends Component {
     }
 
     componentDidMount() {
-        axios.get('/Employees/getone/' + this.props.match.params.id)
+        axios.get(`${process.env.REACT_APP_BACKEND}/Employees/getone/` + this.props.match.params.id)
             .then(response => {
                 this.setState({
                     StaffId: response.data.StaffId,
@@ -102,7 +102,7 @@ export default class EmployeeUpdate extends Component {
 
         console.log(Employee);
 
-        axios.post('/Employees/update/' + this.props.match.params.id, Employee)
+        axios.post(`${process.env.REACT_APP_BACKEND}/Employees/update/` + this.props.match.params.id, Employee)
             .then(res => console.log(res.data));
 
         window.location = '/Employee/';
