@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import companyLogo from '../Images/logo_[Black Edition]_ICO.png';
 import whitecompanyLogo from '../Images/logo_[White_Edition].png';
+import chart from "../Images/chart.png";
+
 
 export default class DashBoard extends Component {
 
@@ -28,9 +30,28 @@ export default class DashBoard extends Component {
 
 
 
-                <div className="dashHeader2">
-                    <h1><u>DashBoard</u></h1>
-                    <span><img src={whitecompanyLogo}/></span>
+                <div className="dash">
+
+                    <div className='dash-box'>
+                        <div className='dash-data-box'>
+                            <h3>Total Orders</h3>
+                            <p className='dash-orders' >489</p>
+                        </div>
+                        <div className='dash-data-box'>
+                            <h3>Total Earnings</h3>
+                            <p className='dash-earnings' >LKR 325,000</p>
+                        </div>
+                        <div className='dash-data-box'>
+                            <h3>Total Expenses</h3>
+                            <p className='dash-expenses' >LKR 101,500</p>
+                        </div>
+                    </div>
+
+                    <img src={chart} className="dash-img"/>
+
+
+
+
                 </div>
                 
             </div>

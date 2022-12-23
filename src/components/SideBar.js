@@ -20,7 +20,7 @@ export default class SideBar extends Component {
                     <a style={{textDecoration:'none', color:'white'}} href="/customer"><button type="button" className="dashbtn06">Customer Accounts</button></a>
                     <a style={{textDecoration:'none', color:'white'}} href="/Employee/"><button type="button" className="dashbtn07">Staff</button></a>
                     <a style={{textDecoration:'none', color:'white'}} href="/Payments/"><button type="button" className="dashbtn08">Payment</button></a>
-                    {/* <button type="button" className="dashbtn09">Order</button> */}
+                    <a style={{textDecoration:'none', color:'white'}} href="/developers"><button type="button" className="dashbtn08">Developers</button></a>
                     <h1>Welcome!!</h1>
                 </div>
               </div>

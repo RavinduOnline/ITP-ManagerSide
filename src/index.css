@@ -748,15 +748,11 @@ code {
 /*-----------------------------------------------CSS For DashBoad*/
 
 .dashHeader2{
-  display: inline-block;
-  margin-left: 34%;
-  margin-right: auto;
-  background-color: none;
-  margin-top: 200px;
-  text-align: center;
+  
 }
 
 .dashHeader2 h1{
+  margin: 0;
   font-size: 70px;
   font-weight: 800;
   color: #FFFFFF;
@@ -3426,3 +3422,61 @@ font-weight: 530;
 
 
 }
+
+/*---------------------------------------------------------------------------New  Dashboard*/
+
+.dash{
+    margin-left: 20%;
+    margin-right: auto;
+    background-color: none;
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+  }
+
+.dash-box{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.dash-data-box{
+  padding: 20px 6%;
+  background-color: white;
+  border-radius: 5px;
+
+}
+
+.dash-data-box h3{
+  color: #707170;
+  font-weight: 700;
+}
+
+.dash-data-box p{
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.dash-orders{
+  color: #4753b5;
+}
+
+.dash-earnings{
+  color: #00a155;
+}
+
+.dash-expenses{
+  color: #ff4d4f;
+}
+
+.dash-img{
+  margin-top: 10px;
+  width: 90%;
+  bottom: 0;
+}
+  
+  
+  
+  
